@@ -32,6 +32,7 @@ stages:
             command: 'push'
             tags: 'latest'
   - stage: Deploy
+    dependsOn: Build
     displayName: Deploy to production
     jobs:
       - job: Deploy
