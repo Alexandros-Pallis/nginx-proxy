@@ -31,6 +31,7 @@ stages:
             repository: 'apallis/nginx-proxy'
             command: 'push'
             tags: 'latest'
+
   - stage: Deploy
     dependsOn: Build
     displayName: Deploy to production
@@ -43,8 +44,9 @@ stages:
             containerregistrytype: 'Container Registry'
             dockerRegistryEndpoint: 'dockerhub'
             dockerComposeFile: '**/prod.docker-compose.yml'
+            projectName: 'nginx-proxy'
             action: 'Run a Docker Compose command'
-            dockerComposeCommand: '--project-name nginx-proxy down'
+            dockerComposeCommand: 'down'
 
         - task: DockerCompose@0
           displayName: Create and start container
@@ -52,5 +54,6 @@ stages:
             containerregistrytype: 'Container Registry'
             dockerRegistryEndpoint: 'dockerhub'
             dockerComposeFile: '**/prod.docker-compose.yml'
+            projectName: 'nginx-proxy'
             action: 'Run a Docker Compose command'
-            dockerComposeCommand: '--project-name nginx-proxy up'
+            dockerComposeCommand: 'up -d'
