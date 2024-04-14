@@ -53,4 +53,4 @@ stages:
             dockerRegistryEndpoint: 'dockerhub'
             dockerComposeFile: '**/prod.docker-compose.yml'
             action: 'Run a Docker Compose command'
-            dockerComposeCommand: 'up'
+            dockerComposeCommand: '--project-name nginx-proxy up'

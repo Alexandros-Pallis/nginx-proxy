@@ -3,6 +3,7 @@ version: '3.9'
 services:
   app:
     image: apallis/nginx-proxy
+    container_name: nginx-proxy
     restart: unless-stopped
     ports:
       - "80:80"
