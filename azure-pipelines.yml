@@ -44,7 +44,7 @@ stages:
             dockerRegistryEndpoint: 'dockerhub'
             dockerComposeFile: '**/prod.docker-compose.yml'
             action: 'Run a Docker Compose command'
-            dockerComposeCommand: 'down'
+            dockerComposeCommand: '--project-name nginx-proxy down'
 
         - task: DockerCompose@0
           displayName: Create and start container
